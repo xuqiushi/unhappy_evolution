@@ -35,23 +35,25 @@ set(PROJECT_SOURCES
         unhappy.h
         unhappy.ui
         ${TS_FILES}
-)
+        file_encoding_transform/file_encoding_transform_drag_in.cpp file_encoding_transform/file_encoding_transform_drag_in.h file_encoding_transform/file_encoding_transform_drag_in.ui file_encoding_transform/file_encoding_transform_drag_in_style.h
+        file_encoding_transform/file_encoding_transform_result.cpp file_encoding_transform/file_encoding_transform_result.h file_encoding_transform/file_encoding_transform_result.ui
+        file_encoding_transform/file_encoding_transform_main.cpp file_encoding_transform/file_encoding_transform_main.h file_encoding_transform/file_encoding_transform_main.ui)
 
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(unhappy_evolution
-        ${PROJECT_SOURCES}
-    )
-else()
-    if(ANDROID)
+            ${PROJECT_SOURCES}
+            )
+else ()
+    if (ANDROID)
         add_library(unhappy_evolution SHARED
-            ${PROJECT_SOURCES}
-        )
-    else()
+                ${PROJECT_SOURCES}
+                )
+    else ()
         add_executable(unhappy_evolution
-            ${PROJECT_SOURCES}
-        )
-    endif()
-endif()
+                ${PROJECT_SOURCES}
+                )
+    endif ()
+endif ()
 
 target_link_libraries(unhappy_evolution PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 

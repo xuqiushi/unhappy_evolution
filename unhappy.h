@@ -7,13 +7,13 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class unhappy; }
 QT_END_NAMESPACE
 
-class unhappy : public QWidget
+class Unhappy : public QWidget
 {
     Q_OBJECT
 
 public:
-    unhappy(QWidget *parent = nullptr);
-    ~unhappy();
+    Unhappy(QWidget *parent = nullptr);
+    ~Unhappy();
 
 private:
     Ui::unhappy *ui;
