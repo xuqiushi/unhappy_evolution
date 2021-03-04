@@ -14,12 +14,12 @@
 #include <QDir>
 #include <QRegularExpression>
 #include "main_view.h"
-#include "ui_main_view.h"
+#include "file_encoding_transform/ui_main_view.h"
 #include "drag_in.h"
 #include "result_view.h"
 
 file_encoding_transform::MainView::MainView(QWidget *parent) :
-    QWidget(parent), ui_(new Ui::FileEncodingTransformMain) {
+    QWidget(parent), ui_(new Ui::MainView) {
     ui_->setupUi(this);
     auto file_encoding_transform_drag_in = new file_encoding_transform::DragIn();
     auto file_encoding_transform_result = new file_encoding_transform::ResultView();

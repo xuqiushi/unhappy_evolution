@@ -9,7 +9,7 @@
 #include <QStringListModel>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class FileEncodingTransformMain; }
+namespace Ui { class MainView; }
 QT_END_NAMESPACE
 
 namespace file_encoding_transform {
@@ -28,7 +28,7 @@ class MainView : public QWidget {
     void SendTransformedFile(QString file_path);
 
   private:
-    Ui::FileEncodingTransformMain *ui_;
+    Ui::MainView *ui_;
 };
 }
 

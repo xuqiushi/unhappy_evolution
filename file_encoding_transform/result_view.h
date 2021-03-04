@@ -9,7 +9,7 @@
 #include <QStringListModel>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class FileEncodingTransformResult; }
+namespace Ui { class ResultView; }
 QT_END_NAMESPACE
 
 namespace file_encoding_transform {
@@ -22,7 +22,7 @@ class ResultView : public QWidget {
     ~ResultView() override;
 
   private:
-    Ui::FileEncodingTransformResult *ui_;
+    Ui::ResultView *ui_;
     QStringListModel *transformed_file_model_ = new QStringListModel();
 
   public slots:

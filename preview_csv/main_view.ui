@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+    <author/>
+    <comment/>
+    <exportmacro/>
     <class>MainView</class>
-    <widget class="QWidget" name="FileEncodingTransformMain">
+    <widget class="QWidget" name="MainView">
         <property name="geometry">
             <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>673</width>
-                <height>554</height>
+                <width>400</width>
+                <height>300</height>
             </rect>
         </property>
-        <property name="mouseTracking">
-            <bool>true</bool>
-        </property>
         <property name="windowTitle">
-            <string>Unhappy</string>
+            <string>MainView</string>
         </property>
     </widget>
-    <resources/>
+    <pixmapfunction/>
     <connections/>
 </ui>

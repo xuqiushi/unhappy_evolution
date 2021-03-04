@@ -3,7 +3,7 @@
     <author/>
     <comment/>
     <exportmacro/>
-    <class>FileEncodingTransformResult</class>
+    <class>ResultView</class>
     <widget class="QWidget" name="FileEncodingTransformResult">
         <property name="geometry">
             <rect>

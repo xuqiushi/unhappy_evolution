@@ -8,7 +8,7 @@
 #include "ui_result_view.h"
 
 file_encoding_transform::ResultView::ResultView(QWidget *parent) :
-    QWidget(parent), ui_(new Ui::FileEncodingTransformResult) {
+    QWidget(parent), ui_(new Ui::ResultView) {
     ui_->setupUi(this);
     ui_->listView->setModel(this->transformed_file_model_);
     ui_->listView->setEditTriggers(QAbstractItemView::NoEditTriggers);

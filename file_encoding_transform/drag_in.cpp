@@ -15,7 +15,7 @@
 #include "drag_in_style.h"
 
 file_encoding_transform::DragIn::DragIn(QWidget *parent) :
-    QWidget(parent), ui_(new Ui::FileEncodingTransformDragIn) {
+    QWidget(parent), ui_(new Ui::DragIn) {
     ui_->setupUi(this);
     this->setAcceptDrops(true);
     ui_->listView->setModel(this->file_list_model_);

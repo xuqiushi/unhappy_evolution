@@ -11,7 +11,7 @@
 #include <QStringListModel>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class FileEncodingTransformDragIn; }
+namespace Ui { class DragIn; }
 QT_END_NAMESPACE
 
 namespace file_encoding_transform {
@@ -37,7 +37,7 @@ class DragIn : public QWidget {
     void SendFileList(QStringListModel *file_list_model);
 
   private:
-    Ui::FileEncodingTransformDragIn *ui_;
+    Ui::DragIn *ui_;
     QStringListModel *file_list_model_ = new QStringListModel();
 };
 }

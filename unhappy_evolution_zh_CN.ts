@@ -2,7 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="unhappy_evolution_zh_CN">
 <context>
-    <name>FileEncodingTransformDragIn</name>
+    <name>DragIn</name>
     <message>
         <location filename="file_encoding_transform/drag_in.ui" line="14"/>
         <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_drag_in.h" line="49"/>
@@ -13,14 +13,29 @@
 <context>
     <name>FileEncodingTransformMain</name>
     <message>
-        <location filename="file_encoding_transform/main_view.ui" line="17"/>
         <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_main_view.h" line="39"/>
-        <source>unhappy</source>
+        <source>Unhappy</source>
+        <oldsource>unhappy</oldsource>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>FileEncodingTransformResult</name>
+    <name>MainView</name>
+    <message>
+        <location filename="preview_csv/main_view.ui" line="17"/>
+        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/preview_csv/ui_main_view.h" line="38"/>
+        <source>MainView</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="file_encoding_transform/main_view.ui" line="17"/>
+        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/file_encoding_transform/ui_main_view.h" line="39"/>
+        <source>Unhappy</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ResultView</name>
     <message>
         <location filename="file_encoding_transform/result_view.ui" line="17"/>
         <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_result_view.h" line="49"/>
@@ -29,11 +44,11 @@
     </message>
 </context>
 <context>
-    <name>unhappy</name>
+    <name>Unhappy</name>
     <message>
         <location filename="unhappy.ui" line="14"/>
         <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_unhappy.h" line="38"/>
-        <source>unhappy</source>
+        <source>Unhappy</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
