@@ -9,11 +9,6 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class Unhappy; }
 QT_END_NAMESPACE
 
-enum ActivatePageId {
-    TRANSFORM_ENCODING,
-    PREVIEW_CSV
-};
-
 class Unhappy : public QWidget {
   Q_OBJECT
 

@@ -6,6 +6,8 @@
 #define UNHAPPY_EVOLUTION_PREVIEW_CSV_MAIN_VIEW_H_
 
 #include <QWidget>
+#include <QTableView>
+#include <QStandardItemModel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainView; }
@@ -19,8 +21,13 @@ class MainView : public QWidget {
     explicit MainView(QWidget *parent = nullptr);
     ~MainView() override;
 
+  private slots:
+    void getFileInfo(const QString& file_path);
+
   private:
     Ui::MainView *ui_;
+    QTableView *table_view_;
+    QStandardItemModel *table_data_;
 };
 }
 

@@ -5,7 +5,7 @@
 #include "file_encoding_transform/main_view.h"
 
 Unhappy::Unhappy(QWidget *parent)
-    : QWidget(parent), ui_(new Ui::Unhappy), active_page_(new file_encoding_transform::MainView(this)) {
+    : QWidget(parent), ui_(new Ui::Unhappy), active_page_(new preview_csv::MainView(this)) {
     // 配置ui文件
     ui_->setupUi(this);
     // 配置主布局为垂直布局

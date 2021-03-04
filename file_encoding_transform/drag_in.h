@@ -31,10 +31,10 @@ class DragIn : public QWidget {
     void dragLeaveEvent(QDragLeaveEvent *event) override;
 
   public slots:
-    void BeginSend();
+    void beginSend();
 
   signals:
-    void SendFileList(QStringListModel *file_list_model);
+    void sendFileList(QStringListModel *file_list_model);
 
   private:
     Ui::DragIn *ui_;

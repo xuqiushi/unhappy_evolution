@@ -60,6 +60,6 @@ void file_encoding_transform::DragIn::dragLeaveEvent(QDragLeaveEvent *event) {
     ui_->listView->viewport()->setAutoFillBackground(true);
 }
 
-void file_encoding_transform::DragIn::BeginSend() {
-    emit this->SendFileList(this->file_list_model_);
+void file_encoding_transform::DragIn::beginSend() {
+    emit this->sendFileList(this->file_list_model_);
 }

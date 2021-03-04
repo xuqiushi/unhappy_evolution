@@ -34,9 +34,9 @@ file_encoding_transform::MainView::MainView(QWidget *parent) :
 
     this->setLayout(main_layout);
     connect(right_arrow, &QPushButton::pressed, file_encoding_transform_drag_in,
-            &file_encoding_transform::DragIn::BeginSend);
-    connect(file_encoding_transform_drag_in, &file_encoding_transform::DragIn::SendFileList, this,
-            &file_encoding_transform::MainView::TransformFiles);
+            &file_encoding_transform::DragIn::beginSend);
+    connect(file_encoding_transform_drag_in, &file_encoding_transform::DragIn::sendFileList, this,
+            &file_encoding_transform::MainView::transformFiles);
     connect(this, &file_encoding_transform::MainView::SendTransformedFile, file_encoding_transform_result,
             &file_encoding_transform::ResultView::ReceiveTransformedFile);
 }
@@ -45,7 +45,7 @@ file_encoding_transform::MainView::~MainView() {
     delete ui_;
 }
 
-void file_encoding_transform::MainView::TransformFiles(QStringListModel *file_list_model) {
+void file_encoding_transform::MainView::transformFiles(QStringListModel *file_list_model) {
     qDebug() << file_list_model->stringList();
     for (int i = 0; i < file_list_model->rowCount(); i++) {
         qDebug() << file_list_model->data(file_list_model->index(i)).toString();

@@ -22,7 +22,7 @@ class MainView : public QWidget {
     ~MainView() override;
 
   private slots:
-    void TransformFiles(QStringListModel *file_list_model);
+    void transformFiles(QStringListModel *file_list_model);
 
   signals:
     void SendTransformedFile(QString file_path);

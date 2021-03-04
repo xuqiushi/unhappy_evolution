@@ -20,6 +20,14 @@
     </message>
 </context>
 <context>
+    <name>FilePathGetter</name>
+    <message>
+        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_file_path_getter.h" line="38"/>
+        <source>FilePathGetter</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainView</name>
     <message>
         <location filename="preview_csv/main_view.ui" line="17"/>
