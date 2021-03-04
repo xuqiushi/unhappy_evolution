@@ -7,15 +7,19 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class unhappy; }
 QT_END_NAMESPACE
 
-class Unhappy : public QWidget
-{
-    Q_OBJECT
+enum ActivatePageId {
+  transform_encoding
+};
 
-public:
-    Unhappy(QWidget *parent = nullptr);
-    ~Unhappy();
+class Unhappy : public QWidget {
+ Q_OBJECT
 
-private:
-    Ui::unhappy *ui;
+ public:
+  Unhappy(QWidget *parent = nullptr);
+  ~Unhappy();
+
+ private:
+  Ui::unhappy *ui;
+  QWidget activePage;
 };
 #endif // UNHAPPY_H

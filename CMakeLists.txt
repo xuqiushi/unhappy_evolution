@@ -35,9 +35,9 @@ set(PROJECT_SOURCES
         unhappy.h
         unhappy.ui
         ${TS_FILES}
-        file_encoding_transform/file_encoding_transform_drag_in.cpp file_encoding_transform/file_encoding_transform_drag_in.h file_encoding_transform/file_encoding_transform_drag_in.ui file_encoding_transform/file_encoding_transform_drag_in_style.h
-        file_encoding_transform/file_encoding_transform_result.cpp file_encoding_transform/file_encoding_transform_result.h file_encoding_transform/file_encoding_transform_result.ui
-        file_encoding_transform/file_encoding_transform_main.cpp file_encoding_transform/file_encoding_transform_main.h file_encoding_transform/file_encoding_transform_main.ui)
+        file_encoding_transform/drag_in.cpp file_encoding_transform/drag_in.h file_encoding_transform/drag_in.ui file_encoding_transform/drag_in_style.h
+        file_encoding_transform/result_view.cpp file_encoding_transform/result_view.h file_encoding_transform/result_view.ui
+        file_encoding_transform/main_view.cpp file_encoding_transform/main_view.h file_encoding_transform/main_view.ui)
 
 if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(unhappy_evolution
