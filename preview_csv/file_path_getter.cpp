@@ -19,12 +19,10 @@ void preview_csv::FilePathGetter::dragEnterEvent(QDragEnterEvent *event) {
                     "background-color:rgb(202, 255, 227);"
                     "border: 2px solid gray;}"
     );
-    qDebug() << "test_in";
     event->acceptProposedAction();
 }
 
 void preview_csv::FilePathGetter::dragLeaveEvent(QDragLeaveEvent *event) {
-    qDebug() << "test";
     this->setStyleSheet("");
 }
 

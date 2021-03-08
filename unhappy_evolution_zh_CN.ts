@@ -43,6 +43,16 @@
     </message>
 </context>
 <context>
+    <name>ParseOption</name>
+    <message>
+        <location filename="preview_csv/parse_option.ui" line="17"/>
+        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_parse_option.h" line="38"/>
+        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_ParseOption.h" line="38"/>
+        <source>ParseOption</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ResultView</name>
     <message>
         <location filename="file_encoding_transform/result_view.ui" line="17"/>

@@ -38,7 +38,7 @@ set(PROJECT_SOURCES
         file_encoding_transform/drag_in.cpp file_encoding_transform/drag_in.h file_encoding_transform/drag_in.ui file_encoding_transform/drag_in_style.h
         file_encoding_transform/result_view.cpp file_encoding_transform/result_view.h file_encoding_transform/result_view.ui
         file_encoding_transform/main_view.cpp file_encoding_transform/main_view.h file_encoding_transform/main_view.ui
-        preview_csv/main_view.cpp preview_csv/main_view.h preview_csv/main_view.ui preview_csv/file_path_getter.cpp preview_csv/file_path_getter.h)
+        preview_csv/main_view.cpp preview_csv/main_view.h preview_csv/main_view.ui preview_csv/file_path_getter.cpp preview_csv/file_path_getter.h preview_csv/parse_option.cpp preview_csv/parse_option.h preview_csv/parse_option.ui preview_csv/custom_csv_model.cpp preview_csv/custom_csv_model.h)
 
 if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(unhappy_evolution

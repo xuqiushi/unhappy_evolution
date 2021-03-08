@@ -8,6 +8,7 @@
 #include <QWidget>
 #include <QTableView>
 #include <QStandardItemModel>
+#include "custom_csv_model.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainView; }
@@ -22,12 +23,18 @@ class MainView : public QWidget {
     ~MainView() override;
 
   private slots:
-    void getFileInfo(const QString& file_path);
+    void getFileInfo(const QString &file_path);
+    void getParseOption(int start_line, int end_line, const QString& line_sep);
+
+  private:
+    void setTableLines(const QString &file_path, int start_line, int end_line, const QString& line_sep);
+    static QStringList parseCsv(const QString &string, const QString& line_sep);
 
   private:
     Ui::MainView *ui_;
     QTableView *table_view_;
-    QStandardItemModel *table_data_;
+    CustomCsvModel *table_data_;
+    QString file_path_;
 };
 }
 
