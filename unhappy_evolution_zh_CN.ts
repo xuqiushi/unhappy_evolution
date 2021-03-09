@@ -5,25 +5,8 @@
     <name>DragIn</name>
     <message>
         <location filename="file_encoding_transform/drag_in.ui" line="14"/>
-        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_drag_in.h" line="49"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/ui_drag_in.h" line="46"/>
         <source>FileEncodingTransformDragIn</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FileEncodingTransformMain</name>
-    <message>
-        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_main_view.h" line="39"/>
-        <source>Unhappy</source>
-        <oldsource>unhappy</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FilePathGetter</name>
-    <message>
-        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_file_path_getter.h" line="38"/>
-        <source>FilePathGetter</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -31,13 +14,13 @@
     <name>MainView</name>
     <message>
         <location filename="preview_csv/main_view.ui" line="17"/>
-        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/preview_csv/ui_main_view.h" line="38"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/preview_csv/ui_main_view.h" line="35"/>
         <source>MainView</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="file_encoding_transform/main_view.ui" line="17"/>
-        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/file_encoding_transform/ui_main_view.h" line="39"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/file_encoding_transform/ui_main_view.h" line="36"/>
         <source>Unhappy</source>
         <translation type="unfinished"></translation>
     </message>
@@ -46,8 +29,7 @@
     <name>ParseOption</name>
     <message>
         <location filename="preview_csv/parse_option.ui" line="17"/>
-        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_parse_option.h" line="38"/>
-        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_ParseOption.h" line="38"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/ui_parse_option.h" line="35"/>
         <source>ParseOption</source>
         <translation type="unfinished"></translation>
     </message>
@@ -56,7 +38,7 @@
     <name>ResultView</name>
     <message>
         <location filename="file_encoding_transform/result_view.ui" line="17"/>
-        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_result_view.h" line="49"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/ui_result_view.h" line="46"/>
         <source>FileEncodingTransformResult</source>
         <translation type="unfinished"></translation>
     </message>
@@ -65,7 +47,7 @@
     <name>Unhappy</name>
     <message>
         <location filename="unhappy.ui" line="14"/>
-        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_unhappy.h" line="38"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/ui_unhappy.h" line="35"/>
         <source>Unhappy</source>
         <translation type="unfinished"></translation>
     </message>

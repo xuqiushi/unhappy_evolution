@@ -11,6 +11,10 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    set(MACOSX TRUE)
+endif()
+
 # QtCreator supports the following variables for Android, which are identical to qmake Android variables.
 # Check http://doc.qt.io/qt-5/deployment-android.html for more information.
 # They need to be set before the find_package(Qt5 ...) call.
@@ -40,6 +44,15 @@ set(PROJECT_SOURCES
         file_encoding_transform/main_view.cpp file_encoding_transform/main_view.h file_encoding_transform/main_view.ui
         preview_csv/main_view.cpp preview_csv/main_view.h preview_csv/main_view.ui preview_csv/file_path_getter.cpp preview_csv/file_path_getter.h preview_csv/parse_option.cpp preview_csv/parse_option.h preview_csv/parse_option.ui preview_csv/custom_csv_model.cpp preview_csv/custom_csv_model.h)
 
+## NOTE: Don't include the path in MACOSX_BUNDLE_ICON_FILE -- this is
+## the property added to Info.plist
+set(MACOSX_BUNDLE_ICON_FILE unhappy_mac_icon.icns)
+#
+## And this part tells CMake where to find and install the file itself
+set(APP_ICON_MACOSX ${CMAKE_CURRENT_SOURCE_DIR}/static/unhappy_mac_icon.icns)
+set_source_files_properties(${APP_ICON_MACOSX} PROPERTIES
+        MACOSX_PACKAGE_LOCATION "Resources")
+
 if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(unhappy_evolution
             ${PROJECT_SOURCES}
@@ -48,6 +61,12 @@ else ()
     if (ANDROID)
         add_library(unhappy_evolution SHARED
                 ${PROJECT_SOURCES}
+                )
+    elseif(MACOSX)
+        add_executable(unhappy_evolution
+                MACOSX_BUNDLE
+                ${PROJECT_SOURCES}
+                ${APP_ICON_MACOSX}
                 )
     else ()
         add_executable(unhappy_evolution

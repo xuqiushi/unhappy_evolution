@@ -11,12 +11,10 @@ preview_csv::CustomCsvModel::CustomCsvModel(QObject *parent)
 preview_csv::CustomCsvModel::~CustomCsvModel() = default;
 
 int preview_csv::CustomCsvModel::rowCount(const QModelIndex &parent) const {
-    qDebug() << "call row_count" << parent;
     return this->row_count_;
 }
 
 int preview_csv::CustomCsvModel::columnCount(const QModelIndex &parent) const {
-    qDebug() << "call column_count" << parent;
     return this->column_count_;
 }
 
@@ -52,7 +50,6 @@ void preview_csv::CustomCsvModel::clear() {
 }
 
 QVariant preview_csv::CustomCsvModel::data(const QModelIndex &index, int role) const {
-    qDebug() << index << role;
     if (role != Qt::DisplayRole) {
         return QVariant();
     }
