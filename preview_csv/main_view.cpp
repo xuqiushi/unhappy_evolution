@@ -38,8 +38,8 @@ preview_csv::MainView::MainView(QWidget *parent) :
 
 preview_csv::MainView::~MainView() {
     delete ui_;
-    delete main_tab_;
+//    delete main_tab_;
     delete layout_;
-    delete file_path_line_;
-    delete preview_content_widget_;
+//    delete file_path_line_;
+//    delete preview_content_widget_;
 }
