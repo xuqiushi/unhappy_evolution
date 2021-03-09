@@ -8,7 +8,9 @@
 preview_csv::CustomCsvModel::CustomCsvModel(QObject *parent)
     : QAbstractTableModel(parent), row_count_(0), column_count_(0) {}
 
-preview_csv::CustomCsvModel::~CustomCsvModel() = default;
+preview_csv::CustomCsvModel::~CustomCsvModel() {
+    this->clear();
+};
 
 int preview_csv::CustomCsvModel::rowCount(const QModelIndex &parent) const {
     return this->row_count_;

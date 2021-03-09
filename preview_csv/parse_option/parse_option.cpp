@@ -18,10 +18,10 @@ preview_csv::ParseOption::ParseOption(QWidget *parent) :
     ui_->setupUi(this);
     auto *parse_options_layout = new QHBoxLayout();
     this->start_line_ = new QLineEdit("0");
-    auto *reg = new QRegExpValidator(QRegExp("^\\d+$"));
-    this->start_line_->setValidator(reg);
+    this->line_reg_validator_ = new QRegExpValidator(QRegExp("^\\d+$"));
+    this->start_line_->setValidator(this->line_reg_validator_);
     this->end_line_ = new QLineEdit("101");
-    this->end_line_->setValidator(reg);
+    this->end_line_->setValidator(this->line_reg_validator_);
     this->line_sep_ = new QComboBox();
     this->line_sep_->addItem(",");
     this->line_sep_->addItem("\\t");
@@ -36,6 +36,10 @@ preview_csv::ParseOption::ParseOption(QWidget *parent) :
 
 preview_csv::ParseOption::~ParseOption() {
     delete ui_;
+    delete start_line_;
+    delete end_line_;
+    delete line_sep_;
+    delete line_reg_validator_;
 }
 
 void preview_csv::ParseOption::sendParseInfo() {

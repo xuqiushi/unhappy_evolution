@@ -2,8 +2,8 @@
 // Created by 徐秋实 on 2021/3/5.
 //
 
-#ifndef UNHAPPY_EVOLUTION_PREVIEW_CSV_PARSE_OPTION_H_
-#define UNHAPPY_EVOLUTION_PREVIEW_CSV_PARSE_OPTION_H_
+#ifndef UNHAPPY_EVOLUTION_PREVIEW_CSV_PARSE_OPTION_PARSE_OPTION_H_
+#define UNHAPPY_EVOLUTION_PREVIEW_CSV_PARSE_OPTION_PARSE_OPTION_H_
 
 #include <QWidget>
 #include <QComboBox>
@@ -31,8 +31,8 @@ class ParseOption : public QWidget {
     QLineEdit *start_line_;
     QLineEdit *end_line_;
     QComboBox *line_sep_;
+    QRegExpValidator *line_reg_validator_;
 };
 }
 
-
-#endif //UNHAPPY_EVOLUTION_PREVIEW_CSV_PARSE_OPTION_H_
+#endif //UNHAPPY_EVOLUTION_PREVIEW_CSV_PARSE_OPTION_PARSE_OPTION_H_

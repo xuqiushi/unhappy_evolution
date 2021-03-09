@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set(MACOSX TRUE)
-endif()
+endif ()
 
 # QtCreator supports the following variables for Android, which are identical to qmake Android variables.
 # Check http://doc.qt.io/qt-5/deployment-android.html for more information.
@@ -42,7 +42,12 @@ set(PROJECT_SOURCES
         file_encoding_transform/drag_in.cpp file_encoding_transform/drag_in.h file_encoding_transform/drag_in.ui file_encoding_transform/drag_in_style.h
         file_encoding_transform/result_view.cpp file_encoding_transform/result_view.h file_encoding_transform/result_view.ui
         file_encoding_transform/main_view.cpp file_encoding_transform/main_view.h file_encoding_transform/main_view.ui
-        preview_csv/main_view.cpp preview_csv/main_view.h preview_csv/main_view.ui preview_csv/file_path_getter.cpp preview_csv/file_path_getter.h preview_csv/parse_option.cpp preview_csv/parse_option.h preview_csv/parse_option.ui preview_csv/custom_csv_model.cpp preview_csv/custom_csv_model.h)
+        preview_csv/main_view.cpp preview_csv/main_view.h preview_csv/main_view.ui
+        preview_csv/file_getter/file_path_getter.cpp preview_csv/file_getter/file_path_getter.h
+        preview_csv/parse_option/parse_option.cpp preview_csv/parse_option/parse_option.h preview_csv/parse_option/parse_option.ui
+        preview_csv/data_model/custom_csv_model.cpp preview_csv/data_model/custom_csv_model.h
+        tools/csv_line_parser.cpp tools/csv_line_parser.h
+        preview_csv/preview_content/preview_content.cpp preview_csv/preview_content/preview_content.h preview_csv/preview_content/preview_content.ui)
 
 ## NOTE: Don't include the path in MACOSX_BUNDLE_ICON_FILE -- this is
 ## the property added to Info.plist
@@ -62,7 +67,7 @@ else ()
         add_library(unhappy_evolution SHARED
                 ${PROJECT_SOURCES}
                 )
-    elseif(MACOSX)
+    elseif (MACOSX)
         add_executable(unhappy_evolution
                 MACOSX_BUNDLE
                 ${PROJECT_SOURCES}

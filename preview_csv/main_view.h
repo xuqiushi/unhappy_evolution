@@ -8,7 +8,11 @@
 #include <QWidget>
 #include <QTableView>
 #include <QStandardItemModel>
-#include "custom_csv_model.h"
+#include <QTableWidget>
+#include "preview_csv/parse_option/parse_option.h"
+#include "preview_csv/preview_content/preview_content.h"
+#include "preview_csv/file_getter/file_path_getter.h"
+#include "preview_csv/data_model/custom_csv_model.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainView; }
@@ -22,19 +26,12 @@ class MainView : public QWidget {
     explicit MainView(QWidget *parent = nullptr);
     ~MainView() override;
 
-  private slots:
-    void getFileInfo(const QString &file_path);
-    void getParseOption(int start_line, int end_line, const QString& line_sep);
-
-  private:
-    void setTableLines(const QString &file_path, int start_line, int end_line, const QString& line_sep);
-    static QStringList parseCsv(const QString &string, const QString& line_sep);
-
   private:
     Ui::MainView *ui_;
-    QTableView *table_view_;
-    CustomCsvModel *table_data_;
-    QString file_path_;
+    QTabWidget *main_tab_;  // 下方展示tab
+    QVBoxLayout *layout_;  // 整体layout
+    preview_csv::FilePathGetter *file_path_line_;  // 文件拖拽组件
+    preview_csv::PreviewContent *preview_content_widget_;  // 预览表格组件
 };
 }
 

@@ -28,9 +28,18 @@
 <context>
     <name>ParseOption</name>
     <message>
-        <location filename="preview_csv/parse_option.ui" line="17"/>
+        <location filename="preview_csv/parse_option/parse_option.ui" line="17"/>
         <location filename="cmake-build-release/unhappy_evolution_autogen/include/ui_parse_option.h" line="35"/>
         <source>ParseOption</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PreviewContent</name>
+    <message>
+        <location filename="preview_csv/preview_content/preview_content.ui" line="17"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/ui_preview_content.h" line="35"/>
+        <source>PreviewContent</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
