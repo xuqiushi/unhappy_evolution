@@ -40,14 +40,7 @@ Unhappy::Unhappy(QWidget *parent)
 
 Unhappy::~Unhappy() {
     delete ui_;
-//    delete file_encoding_transform_button_;
-//    delete preview_csv_button_;
-//    delete main_layout_;
-//    delete head_bar_;
-//    delete head_h_layout_;
-//    delete control_group_;
-//    delete file_encoding_transform_;
-//    delete preview_csv_;
+    delete main_layout_;
 }
 
 void Unhappy::changeActivePage() {

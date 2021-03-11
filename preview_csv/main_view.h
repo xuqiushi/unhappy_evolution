@@ -13,6 +13,7 @@
 #include "preview_csv/preview_content/preview_content.h"
 #include "preview_csv/file_getter/file_path_getter.h"
 #include "preview_csv/data_model/custom_csv_model.h"
+#include "preview_csv/file_summary/file_summary.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainView; }
@@ -32,6 +33,8 @@ class MainView : public QWidget {
     QVBoxLayout *layout_;  // 整体layout
     preview_csv::FilePathGetter *file_path_line_;  // 文件拖拽组件
     preview_csv::PreviewContent *preview_content_widget_;  // 预览表格组件
+    preview_csv::FileSummary *file_summary_widget_;  // 预览表格组件
+
 };
 }
 

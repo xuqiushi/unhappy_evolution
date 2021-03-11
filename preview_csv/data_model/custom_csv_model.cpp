@@ -55,5 +55,9 @@ QVariant preview_csv::CustomCsvModel::data(const QModelIndex &index, int role) c
     if (role != Qt::DisplayRole) {
         return QVariant();
     }
-    return this->csv_data_[index.row()][index.column()];
+    if (index.column() < this->csv_data_[index.row()].size()) {
+        return this->csv_data_[index.row()][index.column()];
+    } else {
+        return QVariant();
+    }
 }

@@ -49,11 +49,6 @@ preview_csv::PreviewContent::PreviewContent(QWidget *parent) :
 preview_csv::PreviewContent::~PreviewContent() {
     delete ui_;
     delete preview_content_layout_;
-//    delete parse_option_layout_;
-//    delete parse_option_;
-//    delete start_parse_button_;
-//    delete table_view_;
-//    delete table_data_;
 }
 
 void preview_csv::PreviewContent::setTableLines(const QString &file_path,
