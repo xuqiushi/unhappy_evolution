@@ -93,6 +93,18 @@ void preview_csv::FileSummary::insertDoubleToRow(int row_index,
     }
 }
 
+void preview_csv::FileSummary::insertSingleToRow(int row_index,
+                                                 const QString &label_text,
+                                                 const QString &first_content_text,
+                                                 const QString &second_content_text) {
+    auto *label_widget = new QLabel(label_text);
+    this->main_content_layout_->addWidget(label_widget, row_index, 0, 1, 0);
+    auto *first_label_content = new QLineEdit(first_content_text);
+    this->main_content_layout_->addWidget(first_label_content, row_index, 1, 1, 1);
+    auto *second_label_content = new QLineEdit(second_content_text);
+    this->main_content_layout_->addWidget(second_label_content, row_index, 2, 1, 8);
+}
+
 void preview_csv::FileSummary::getFileInfo(int start_line, int end_line, const QString &line_sep) {
     std::filesystem::path file_path(this->file_path_.toStdString().c_str());
     this->file_info_ = new FileInfo();
@@ -118,8 +130,8 @@ void preview_csv::FileSummary::getFileInfo(int start_line, int end_line, const Q
         }
         this->insertSingleToRow(current_row,
                                 column_name,
-                                QString("%1:%2").arg(QString::number(this->column_unique_values_.find(column_name)->second.size()),
-                                                     unique_column_value_string));
+                                QString("%1").arg(QString::number(this->column_unique_values_.find(column_name)->second.size())),
+                                QString("%1").arg(unique_column_value_string));
         current_row++;
     }
 }
@@ -138,6 +150,11 @@ void preview_csv::FileSummary::extractTableLines(int start_line,
         line.clear();
     }
     this->table_lines_.clear();
+    for (auto &line: this->column_unique_values_) {
+        line.second.clear();
+    }
+    this->column_unique_values_.clear();
+    this->column_names_.clear();
     QStringList line_string_list;
     int row_index = 0;
     int row_count = 0, column_count = 0;

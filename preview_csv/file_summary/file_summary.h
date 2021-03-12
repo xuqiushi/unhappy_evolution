@@ -45,10 +45,13 @@ class FileSummary : public QWidget {
     QList<QString> column_names_;
     std::unordered_map<QString, std::unordered_set<QString>> column_unique_values_;
 
-
   private:
     void insertDoubleToRow(int row_index, int item_index, const QString &label_text, const QString &content_text);
     void insertSingleToRow(int row_index, const QString &label_text, const QString &content_text);
+    void insertSingleToRow(int row_index,
+                           const QString &label_text,
+                           const QString &first_content_text,
+                           const QString &second_content_text);
     void getFileInfo(int start_line, int end_line, const QString &line_sep);
     void extractTableLines(
         int start_line,
