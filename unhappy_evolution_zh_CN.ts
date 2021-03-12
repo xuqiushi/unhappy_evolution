@@ -16,6 +16,7 @@
     <message>
         <location filename="preview_csv/file_summary/file_summary.ui" line="17"/>
         <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_file_summary.h" line="35"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/ui_file_summary.h" line="35"/>
         <source>FileSummary</source>
         <translation type="unfinished"></translation>
     </message>

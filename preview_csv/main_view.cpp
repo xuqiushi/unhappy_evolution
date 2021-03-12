@@ -17,8 +17,7 @@ preview_csv::MainView::MainView(QWidget *parent) :
     layout_(new QVBoxLayout()),
     file_path_line_(new preview_csv::FilePathGetter("拖拽文件至此")),
     preview_content_widget_(new preview_csv::PreviewContent()),
-    file_summary_widget_(new preview_csv::FileSummary())
-    {
+    file_summary_widget_(new preview_csv::FileSummary()) {
     // 创建整个界面
     ui_->setupUi(this);
     // 创建垂直布局
@@ -35,6 +34,10 @@ preview_csv::MainView::MainView(QWidget *parent) :
             &preview_csv::FilePathGetter::emitFilePath,
             this->preview_content_widget_,
             &preview_csv::PreviewContent::receiveFilePath);
+    connect(this->file_path_line_,
+            &preview_csv::FilePathGetter::emitFilePath,
+            this->file_summary_widget_,
+            &preview_csv::FileSummary::receiveFilePath);
 }
 
 preview_csv::MainView::~MainView() {
