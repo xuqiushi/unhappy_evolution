@@ -43,6 +43,7 @@ class FileSummary : public QWidget {
     int row_count_;
     int column_count_;
     QList<QString> column_names_;
+    std::unordered_map<QString, int> column_unique_count_;
     std::unordered_map<QString, std::unordered_set<QString>> column_unique_values_;
 
   private:
@@ -57,6 +58,7 @@ class FileSummary : public QWidget {
         int start_line,
         int end_line,
         const QString &line_sep);
+    void clearData();
 
   public slots:
     void getParseOption(int start_line, int end_line, const QString &line_sep);

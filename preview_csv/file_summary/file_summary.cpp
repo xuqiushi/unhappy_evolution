@@ -28,6 +28,7 @@ preview_csv::FileSummary::FileSummary(QWidget *parent) :
     row_count_(0),
     column_count_(0),
     column_names_(QList<QString>()),
+    column_unique_count_(std::unordered_map<QString, int>()),
     column_unique_values_(std::unordered_map<QString, std::unordered_set<QString>>()) {
     ui_->setupUi(this);
     this->setLayout(this->main_layout_);
@@ -53,6 +54,7 @@ preview_csv::FileSummary::FileSummary(QWidget *parent) :
 
 preview_csv::FileSummary::~FileSummary() {
     delete ui_;
+    this->clearData();
 }
 
 void preview_csv::FileSummary::insertSingleToRow(int row_index,
@@ -128,9 +130,15 @@ void preview_csv::FileSummary::getFileInfo(int start_line, int end_line, const Q
         for (const auto &word : unique_values->second) {
             unique_column_value_string = unique_column_value_string + word + ",";
         }
+        QString count_string;
+        if (this->column_unique_count_.find(column_name)->second >= 100) {
+            count_string = QString("大于等于%1").arg(this->column_unique_count_.find(column_name)->second);
+        } else {
+            count_string = QString("%1").arg(this->column_unique_count_.find(column_name)->second);
+        }
         this->insertSingleToRow(current_row,
                                 column_name,
-                                QString("%1").arg(QString::number(this->column_unique_values_.find(column_name)->second.size())),
+                                QString("%1").arg(count_string),
                                 QString("%1").arg(unique_column_value_string));
         current_row++;
     }
@@ -146,15 +154,7 @@ void preview_csv::FileSummary::extractTableLines(int start_line,
         return;
     }
     QTextStream in(&file);
-    for (auto &line: this->table_lines_) {
-        line.clear();
-    }
-    this->table_lines_.clear();
-    for (auto &line: this->column_unique_values_) {
-        line.second.clear();
-    }
-    this->column_unique_values_.clear();
-    this->column_names_.clear();
+    this->clearData();
     QStringList line_string_list;
     int row_index = 0;
     int row_count = 0, column_count = 0;
@@ -188,11 +188,18 @@ void preview_csv::FileSummary::extractTableLines(int start_line,
                 }
                 auto existed_record = this->column_unique_values_.find(this->column_names_[j]);
                 if (existed_record != this->column_unique_values_.end()) {
+                    auto column_unique_count = this->column_unique_count_.find(this->column_names_[j]);
+                    if (column_unique_count->second >= 100) {
+                        continue;
+                    }
                     existed_record->second.insert(line_string_list[j]);
+                    column_unique_count->second = existed_record->second.size();
                 } else {
                     auto value_set = std::unordered_set<QString>();
                     value_set.insert(line_string_list[j]);
                     this->column_unique_values_.insert(std::make_pair(this->column_names_[j], value_set));
+                    auto less_enough_pair = std::make_pair(this->column_names_[j], 1);
+                    this->column_unique_count_.insert(less_enough_pair);
                 }
             }
         }
@@ -202,6 +209,19 @@ void preview_csv::FileSummary::extractTableLines(int start_line,
     this->column_count_ = column_count;
     file.close();//关闭文件
 
+}
+
+void preview_csv::FileSummary::clearData() {
+    for (auto &line: this->table_lines_) {
+        line.clear();
+    }
+    this->table_lines_.clear();
+    for (auto &line: this->column_unique_values_) {
+        line.second.clear();
+    }
+    this->column_unique_values_.clear();
+    this->column_names_.clear();
+    this->column_unique_count_.clear();
 }
 
 void preview_csv::FileSummary::getParseOption(int start_line, int end_line, const QString &line_sep) {
