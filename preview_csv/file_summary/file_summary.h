@@ -10,6 +10,9 @@
 #include <QPushButton>
 #include <unordered_map>
 #include <unordered_set>
+#include <QProgressBar>
+#include <QTimer>
+#include <thread>
 #include "preview_csv/parse_option/parse_option.h"
 
 QT_BEGIN_NAMESPACE
@@ -45,6 +48,12 @@ class FileSummary : public QWidget {
     QList<QString> column_names_;
     std::unordered_map<QString, int> column_unique_count_;
     std::unordered_map<QString, std::unordered_set<QString>> column_unique_values_;
+    int current_progress_value_;
+    bool current_progress_status_;
+    int actual_end_line_;
+    QProgressBar *progress_bar_;
+    QTimer *progress_timer_;
+    std::thread back_ground_;
 
   private:
     void insertDoubleToRow(int row_index, int item_index, const QString &label_text, const QString &content_text);
@@ -53,7 +62,7 @@ class FileSummary : public QWidget {
                            const QString &label_text,
                            const QString &first_content_text,
                            const QString &second_content_text);
-    void getFileInfo(int start_line, int end_line, const QString &line_sep);
+    void getFileInfo();
     void extractTableLines(
         int start_line,
         int end_line,
@@ -63,6 +72,7 @@ class FileSummary : public QWidget {
   public slots:
     void getParseOption(int start_line, int end_line, const QString &line_sep);
     void receiveFilePath(QString file_path);
+    void setProgressValue();
 };
 }
 

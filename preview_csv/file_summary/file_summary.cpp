@@ -29,13 +29,19 @@ preview_csv::FileSummary::FileSummary(QWidget *parent) :
     column_count_(0),
     column_names_(QList<QString>()),
     column_unique_count_(std::unordered_map<QString, int>()),
-    column_unique_values_(std::unordered_map<QString, std::unordered_set<QString>>()) {
+    column_unique_values_(std::unordered_map<QString, std::unordered_set<QString>>()),
+    progress_bar_(new QProgressBar()),
+    progress_timer_(new QTimer()),
+    current_progress_value_(0),
+    current_progress_status_(true),
+    actual_end_line_(101) {
     ui_->setupUi(this);
     this->setLayout(this->main_layout_);
     this->main_layout_->setAlignment(Qt::AlignTop);
     this->parse_option_layout_->addWidget(this->parse_option_);
     this->parse_option_layout_->addWidget(this->start_parse_button_);
     this->main_layout_->addLayout(parse_option_layout_, 1);
+    this->main_layout_->addWidget(this->progress_bar_, 1);
     this->main_layout_->addLayout(main_content_layout_, 9);
     for (int i = 0; i < 10; i++) {
         this->main_content_layout_->setColumnStretch(i, 1);
@@ -50,6 +56,7 @@ preview_csv::FileSummary::FileSummary(QWidget *parent) :
             &preview_csv::ParseOption::sendInfo,
             this,
             &preview_csv::FileSummary::getParseOption);
+    connect(this->progress_timer_, &QTimer::timeout, this, &preview_csv::FileSummary::setProgressValue);
 }
 
 preview_csv::FileSummary::~FileSummary() {
@@ -107,7 +114,7 @@ void preview_csv::FileSummary::insertSingleToRow(int row_index,
     this->main_content_layout_->addWidget(second_label_content, row_index, 2, 1, 8);
 }
 
-void preview_csv::FileSummary::getFileInfo(int start_line, int end_line, const QString &line_sep) {
+void preview_csv::FileSummary::getFileInfo() {
     std::filesystem::path file_path(this->file_path_.toStdString().c_str());
     this->file_info_ = new FileInfo();
     this->file_info_->file_name = QString::fromStdString(file_path.filename().string());
@@ -120,7 +127,6 @@ void preview_csv::FileSummary::getFileInfo(int start_line, int end_line, const Q
     delete item;
     this->insertDoubleToRow(0, 0, "文件名", this->file_info_->file_name);
     this->insertDoubleToRow(0, 1, "文件大小", this->file_info_->file_size);
-    this->extractTableLines(start_line, end_line, line_sep);
     this->insertDoubleToRow(1, 0, "行数", QString::number(this->row_count_));
     this->insertDoubleToRow(1, 1, "列数", QString::number(this->column_count_));
     int current_row = 2;
@@ -154,7 +160,6 @@ void preview_csv::FileSummary::extractTableLines(int start_line,
         return;
     }
     QTextStream in(&file);
-    this->clearData();
     QStringList line_string_list;
     int row_index = 0;
     int row_count = 0, column_count = 0;
@@ -204,9 +209,11 @@ void preview_csv::FileSummary::extractTableLines(int start_line,
             }
         }
         row_index++;
+        this->current_progress_value_ = row_index;
     }
     this->row_count_ = this->table_lines_.size();
     this->column_count_ = column_count;
+    this->actual_end_line_ = start_line + this->row_count_;
     file.close();//关闭文件
 
 }
@@ -225,11 +232,41 @@ void preview_csv::FileSummary::clearData() {
 }
 
 void preview_csv::FileSummary::getParseOption(int start_line, int end_line, const QString &line_sep) {
-    if (!this->file_path_.isEmpty()) {
-        this->getFileInfo(start_line, end_line, line_sep);
+    // 如果状态是true，即可以进行查询，则进入查询操作
+    if (!this->file_path_.isEmpty() && this->current_progress_status_) {
+        // 表示中止行
+        this->actual_end_line_ = end_line;
+        // 重置状态栏
+        this->progress_bar_->reset();
+        this->progress_bar_->setMinimum(start_line);
+        this->progress_bar_->setMaximum(this->actual_end_line_);
+        // 将状态标记为false，即不可查询
+        this->current_progress_status_ = false;
+        this->clearData();
+        // 创建轮询timer
+        this->progress_timer_->start(100);
+        // 创建后台任务子进程。
+        this->back_ground_ = std::thread(&preview_csv::FileSummary::extractTableLines,
+                                         this,
+                                         start_line,
+                                         end_line,
+                                         line_sep);
     }
 }
-
+void preview_csv::FileSummary::setProgressValue() {
+    // 此为轮询任务，每次轮询会将当前的progress设置为读取到的值
+    this->progress_bar_->setValue(this->current_progress_value_);
+    this->progress_bar_->update();
+    if (this->current_progress_value_ == this->actual_end_line_) {
+        // 如果轮询时发现当前进度跟计算的总进度一致，那么停止任务并开始渲染。
+        this->progress_bar_->setMaximum(this->actual_end_line_);
+        this->back_ground_.join();
+        this->getFileInfo();
+        this->progress_timer_->stop();
+        // 标记状态为可查询
+        this->current_progress_status_ = true;
+    }
+}
 void preview_csv::FileSummary::receiveFilePath(QString file_path) {
     this->file_path_ = std::move(file_path);
     this->start_parse_button_->animateClick();
