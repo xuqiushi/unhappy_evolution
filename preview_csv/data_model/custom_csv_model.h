@@ -13,18 +13,18 @@ class CustomCsvModel : public QAbstractTableModel {
     explicit CustomCsvModel(QObject *parent = nullptr);
     ~CustomCsvModel() override;
 
-    int rowCount(const QModelIndex &parent) const override;
-    int columnCount(const QModelIndex &parent) const override;
-    QVariant data(const QModelIndex &index, int role) const override;
-    void setRowCount(int count);
-    void setColumnCount(int count);
-    void setCsvData(int row_count, int column_count, QList<QStringList> csv_data);
-    void clear();
+    [[nodiscard]] int rowCount(const QModelIndex &parent) const override;  // 继承于abs，返回表格行数
+    [[nodiscard]] int columnCount(const QModelIndex &parent) const override;  // 继承于abs，返回表格列数
+    [[nodiscard]] QVariant data(const QModelIndex &index, int role) const override;  // 继承于abs，返回表格某个cell值，包含渲染方式
+    void setRowCount(int count);  // 设置行数
+    void setColumnCount(int count);  // 设置列数
+    void setCsvData(int row_count, int column_count, QList<QStringList> csv_data);  // 设置数据
+    void clear();  // 删除所有数据
 
   private:
-    QList<QStringList> csv_data_;
-    int row_count_;
-    int column_count_;
+    QList<QStringList> csv_data_;  // 保存数据为双层list结构，即二维表，每个值为字符串
+    int row_count_;  // 保存行数
+    int column_count_;  // 保存列数
 };
 }
 

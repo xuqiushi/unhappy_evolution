@@ -30,6 +30,7 @@ preview_csv::MainView::MainView(QWidget *parent) :
     this->main_tab_->addTab(this->preview_content_widget_, "预览内容");
     this->layout_->addWidget(this->main_tab_);
     this->setLayout(this->layout_);
+    // 如果拖入文件，则把路径传到两个子组件里边去
     connect(this->file_path_line_,
             &preview_csv::FilePathGetter::emitFilePath,
             this->preview_content_widget_,

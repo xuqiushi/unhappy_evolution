@@ -56,19 +56,22 @@ preview_csv::FileSummary::FileSummary(QWidget *parent) :
             &preview_csv::ParseOption::sendInfo,
             this,
             &preview_csv::FileSummary::getParseOption);
+    // 轮询修改处理进度
     connect(this->progress_timer_, &QTimer::timeout, this, &preview_csv::FileSummary::setProgressValue);
 }
 
 preview_csv::FileSummary::~FileSummary() {
     delete ui_;
+    // 析构的时候删掉数据
     this->clearData();
 }
 
 void preview_csv::FileSummary::insertSingleToRow(int row_index,
                                                  const QString &label_text,
                                                  const QString &content_text) {
+    // 一行插入时按照标签与输入框1:9的比例插入
     auto *label_widget = new QLabel(label_text);
-    this->main_content_layout_->addWidget(label_widget, row_index, 0, 1, 0);
+    this->main_content_layout_->addWidget(label_widget, row_index, 0, 1, 1);
     auto *label_content = new QLineEdit(content_text);
     this->main_content_layout_->addWidget(label_content, row_index, 1, 1, 9);
 }
@@ -77,6 +80,7 @@ void preview_csv::FileSummary::insertDoubleToRow(int row_index,
                                                  int item_index,
                                                  const QString &label_text,
                                                  const QString &content_text) {
+    // 插入两行时按照第一个标签、第一个框、空格、第二个标签、第二个框为1:3:1:1:3的比例插入
     int first_label_start = 0;  // 第一个item label开始位置
     int first_label_length = 1;  // 第一item label长度
     int first_content_start = first_label_start + first_label_length;  // 第一个item content开始位置
@@ -106,6 +110,7 @@ void preview_csv::FileSummary::insertSingleToRow(int row_index,
                                                  const QString &label_text,
                                                  const QString &first_content_text,
                                                  const QString &second_content_text) {
+    // 按照标签、第一个框、第二个框1:1:8的比例插入
     auto *label_widget = new QLabel(label_text);
     this->main_content_layout_->addWidget(label_widget, row_index, 0, 1, 0);
     auto *first_label_content = new QLineEdit(first_content_text);
@@ -115,20 +120,29 @@ void preview_csv::FileSummary::insertSingleToRow(int row_index,
 }
 
 void preview_csv::FileSummary::getFileInfo() {
+    // 调用filesystem库直接解析文件路径
     std::filesystem::path file_path(this->file_path_.toStdString().c_str());
     this->file_info_ = new FileInfo();
+    // 获取文件名字
     this->file_info_->file_name = QString::fromStdString(file_path.filename().string());
+    // 获取文件大小，单位为m
     this->file_info_->file_size = QString::number((double) std::filesystem::file_size(file_path) / 1048576.0);
+    // 删除layout下的所有项目
     QLayoutItem *item;
     while ((item = this->main_content_layout_->takeAt(0)))
         if (item->widget()) {
             item->widget()->setParent(nullptr);
         }
     delete item;
+    // 第一行插入文件名
     this->insertDoubleToRow(0, 0, "文件名", this->file_info_->file_name);
+    // 第一行插入文件大小
     this->insertDoubleToRow(0, 1, "文件大小", this->file_info_->file_size);
+    // 第二行插入行数
     this->insertDoubleToRow(1, 0, "行数", QString::number(this->row_count_));
+    // 第二行插入列数
     this->insertDoubleToRow(1, 1, "列数", QString::number(this->column_count_));
+    // 第三行开始每一行插入每列的名字、不重复值数量、不重复值
     int current_row = 2;
     for (auto &column_name: this->column_names_) {
         auto unique_column_value_string = QString();
@@ -153,6 +167,7 @@ void preview_csv::FileSummary::getFileInfo() {
 void preview_csv::FileSummary::extractTableLines(int start_line,
                                                  int end_line,
                                                  const QString &line_sep) {
+    // 打开文件
     QFile file(this->file_path_);
     if (!file.open(QFile::ReadOnly |
         QFile::Text)) {
@@ -163,6 +178,7 @@ void preview_csv::FileSummary::extractTableLines(int start_line,
     QStringList line_string_list;
     int row_index = 0;
     int row_count = 0, column_count = 0;
+    // 读取每一行直到读到文件末尾或达到要求最大值
     while (!in.atEnd() && row_index < end_line) {
         QString f_file_line = in.readLine();//读取文件的一行
 
@@ -170,15 +186,19 @@ void preview_csv::FileSummary::extractTableLines(int start_line,
             row_index++;
             continue;
         }
+        // 解析本行
         line_string_list = tools::CsvLineParser(f_file_line, line_sep).getParsedList();
         this->table_lines_.append(line_string_list);
         row_count++;
+        // 如果某一行解析除了比现有列数更多的元素，则把现有列数更新为更大值
         if (column_count < line_string_list.size()) {
             column_count = line_string_list.size();
         }
         if (row_index == 0) {
+            // 如果是第一行，则将本行作为列名保存
             if (!this->table_lines_.empty()) {
                 for (int i = 0; i < this->table_lines_[0].size(); i++) {
+                    // 更新列名，如果发现元素数量超过列名，则增加一个与列序号相关的名字
                     if (i < this->table_lines_[0].size()) {
                         this->column_names_.push_back(this->table_lines_[0][i]);
                     } else {
@@ -187,6 +207,7 @@ void preview_csv::FileSummary::extractTableLines(int start_line,
                 }
             }
         } else {
+            // 如果不是第一行则更新每列的不重复值数量与不重复值
             for (int j = 0; j < line_string_list.size(); j++) {
                 if (j >= this->column_names_.size()) {
                     this->column_names_.push_back(QString("Column%1").arg(j));

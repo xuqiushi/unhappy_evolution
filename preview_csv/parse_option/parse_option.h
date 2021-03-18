@@ -28,10 +28,10 @@ class ParseOption : public QWidget {
 
   private:
     Ui::ParseOption *ui_;
-    QLineEdit *start_line_;
-    QLineEdit *end_line_;
-    QComboBox *line_sep_;
-    QRegExpValidator *line_reg_validator_;
+    QLineEdit *start_line_;  // 开始行
+    QLineEdit *end_line_;  // 结束行
+    QComboBox *line_sep_;  // csv sep值
+    QRegExpValidator *line_reg_validator_;  // 用来做正则验证输入的数据的验证器
 };
 }
 

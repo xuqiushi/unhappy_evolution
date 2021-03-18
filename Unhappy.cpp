@@ -15,9 +15,14 @@ Unhappy::Unhappy(QWidget *parent)
       {
     // 配置ui文件
     ui_->setupUi(this);
+    // 创建第一行导航按钮
+    this->file_encoding_transform_button_->setFocusPolicy(Qt::NoFocus);
+    this->preview_csv_button_->setFocusPolicy(Qt::NoFocus);
+    this->control_group_ = new QButtonGroup(this->head_h_layout_);
+    // 隐藏content部分
     this->file_encoding_transform_->hide();
     this->preview_csv_->hide();
-    this->control_group_ = new QButtonGroup(this->head_h_layout_);
+    // 显示默认激活的页面
     this->active_page_ = this->preview_csv_;
     this->active_page_->show();
     // 配置主布局为垂直布局
