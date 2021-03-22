@@ -47,7 +47,9 @@ set(PROJECT_SOURCES
         preview_csv/parse_option/parse_option.cpp preview_csv/parse_option/parse_option.h preview_csv/parse_option/parse_option.ui
         preview_csv/data_model/custom_csv_model.cpp preview_csv/data_model/custom_csv_model.h
         tools/csv_line_parser.cpp tools/csv_line_parser.h
-        preview_csv/preview_content/preview_content.cpp preview_csv/preview_content/preview_content.h preview_csv/preview_content/preview_content.ui preview_csv/file_summary/file_summary.cpp preview_csv/file_summary/file_summary.h preview_csv/file_summary/file_summary.ui)
+        preview_csv/preview_content/preview_content.cpp preview_csv/preview_content/preview_content.h preview_csv/preview_content/preview_content.ui preview_csv/file_summary/file_summary.cpp preview_csv/file_summary/file_summary.h preview_csv/file_summary/file_summary.ui parse_json/main_view.cpp
+        parse_json/main_view.h parse_json/main_view.ui
+        parse_json/json_plain_viewer/json_plain_viewer.cpp parse_json/json_plain_viewer/json_plain_viewer.h parse_json/json_tree_viewer/json_tree_model/json_tree_model.cpp parse_json/json_tree_viewer/json_tree_model/json_tree_model.h parse_json/json_tree_viewer/json_tree_viewer.cpp parse_json/json_tree_viewer/json_tree_viewer.h)
 
 ## NOTE: Don't include the path in MACOSX_BUNDLE_ICON_FILE -- this is
 ## the property added to Info.plist
