@@ -95,4 +95,13 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>picture_to_base64::MainView</name>
+    <message>
+        <location filename="picture_to_base64/main_view.ui" line="14"/>
+        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/picture_to_base64/ui_main_view.h" line="35"/>
+        <source>MainView</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

@@ -1,0 +1,32 @@
+//
+// Created by 徐秋实 on 2021/3/23.
+//
+
+// You may need to build the project (run Qt uic code generator) to get "ui_main_view.h" resolved
+
+#include "main_view.h"
+#include "picture_to_base64/ui_main_view.h"
+
+picture_to_base64::MainView::MainView(QWidget *parent) :
+    QWidget(parent),
+    ui_(new picture_to_base64::Ui::MainView),
+    main_layout_(new QVBoxLayout()),
+    clipboard_picture_viewer_(new ClipboardPictureViewer()),
+    base_64_result_(new QTextEdit()) {
+    ui_->setupUi(this);
+    this->setLayout(main_layout_);
+    main_layout_->addWidget(this->clipboard_picture_viewer_, 1);
+    main_layout_->addWidget(this->base_64_result_, 1);
+    connect(this->clipboard_picture_viewer_,
+            &picture_to_base64::ClipboardPictureViewer::sendBase64,
+            this,
+            &picture_to_base64::MainView::receiveBaseString);
+}
+
+picture_to_base64::MainView::~MainView() {
+    delete ui_;
+}
+
+void picture_to_base64::MainView::receiveBaseString(const QString& base_64_string) {
+    this->base_64_result_->setText(base_64_string);
+}

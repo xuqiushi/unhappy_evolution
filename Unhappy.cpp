@@ -12,14 +12,16 @@ Unhappy::Unhappy(QWidget *parent)
           std::map<GlobalFuncType, QPushButton *>{
               {PARSE_JSON, new QPushButton(QString("json解析"))},
               {FILE_ENCODING_TRANSFORM, new QPushButton(QString("文件UTF-8转GB18030"))},
-              {FAST_PREVIEW_CSV, new QPushButton(QString("快速预览csv"))}
+              {FAST_PREVIEW_CSV, new QPushButton(QString("快速预览csv"))},
+              {PICTURE_TO_BASE_64, new QPushButton(QString("剪切板转base64"))}
           }
       ),
       function_map_(
           std::map<GlobalFuncType, QWidget *>{
               {PARSE_JSON, new parse_json::MainView(this)},
               {FILE_ENCODING_TRANSFORM, new file_encoding_transform::MainView(this)},
-              {FAST_PREVIEW_CSV, new preview_csv::MainView(this)}
+              {FAST_PREVIEW_CSV, new preview_csv::MainView(this)},
+              {PICTURE_TO_BASE_64, new picture_to_base64::MainView(this)}
           }
       ) {
     // 配置ui文件
@@ -41,7 +43,7 @@ Unhappy::Unhappy(QWidget *parent)
         this->function_map_.find(button.first)->second->hide();
     }
     // 显示默认激活的页面
-    this->active_page_ = this->function_map_.find(PARSE_JSON)->second;
+    this->active_page_ = this->function_map_.find(PICTURE_TO_BASE_64)->second;
     this->active_page_->show();
     this->head_bar_->setFrameStyle(QFrame::StyledPanel | QFrame::Plain);
     this->control_group_->setExclusive(true);

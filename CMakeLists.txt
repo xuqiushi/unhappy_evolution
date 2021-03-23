@@ -49,7 +49,7 @@ set(PROJECT_SOURCES
         tools/csv_line_parser.cpp tools/csv_line_parser.h
         preview_csv/preview_content/preview_content.cpp preview_csv/preview_content/preview_content.h preview_csv/preview_content/preview_content.ui preview_csv/file_summary/file_summary.cpp preview_csv/file_summary/file_summary.h preview_csv/file_summary/file_summary.ui parse_json/main_view.cpp
         parse_json/main_view.h parse_json/main_view.ui
-        parse_json/json_plain_viewer/json_plain_viewer.cpp parse_json/json_plain_viewer/json_plain_viewer.h parse_json/json_tree_viewer/json_tree_model/json_tree_model.cpp parse_json/json_tree_viewer/json_tree_model/json_tree_model.h parse_json/json_tree_viewer/json_tree_viewer.cpp parse_json/json_tree_viewer/json_tree_viewer.h)
+        parse_json/json_plain_viewer/json_plain_viewer.cpp parse_json/json_plain_viewer/json_plain_viewer.h parse_json/json_tree_viewer/json_tree_model/json_tree_model.cpp parse_json/json_tree_viewer/json_tree_model/json_tree_model.h parse_json/json_tree_viewer/json_tree_viewer.cpp parse_json/json_tree_viewer/json_tree_viewer.h picture_to_base64/main_view.cpp picture_to_base64/main_view.h picture_to_base64/main_view.ui picture_to_base64/clipboard_picture_viewer/clipboard_picture_viewer.cpp picture_to_base64/clipboard_picture_viewer/clipboard_picture_viewer.h)
 
 ## NOTE: Don't include the path in MACOSX_BUNDLE_ICON_FILE -- this is
 ## the property added to Info.plist
