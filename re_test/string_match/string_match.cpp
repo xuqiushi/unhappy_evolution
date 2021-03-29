@@ -24,6 +24,9 @@ void re_test::StringMatch::setHighlightMather(const QList<std::pair<int, int>> &
     ColorCircleNode *current_color = this->color_circle_;
     if (!isReadOnly()) {
         for (auto interval: highlight_intervals) {
+            if (interval.first == interval.second) {
+                continue;
+            }
             QTextEdit::ExtraSelection selection;
 
             QColor line_color = current_color->color;
