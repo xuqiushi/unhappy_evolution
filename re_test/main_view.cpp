@@ -24,7 +24,7 @@ re_test::MainView::MainView(QWidget *parent) :
     this->body_layout_->addWidget(this->string_raw_);
     this->body_layout_->addWidget(this->string_match_);
     connect(this->re_input_, &re_test::ReInput::textChanged, this, &re_test::MainView::reInputChanging);
-    connect(this, &re_test::MainView::startHightlight, this->string_match_, &re_test::StringMatch::setHighlightMather);
+    connect(this, &re_test::MainView::startHighlight, this->string_match_, &re_test::StringMatch::setHighlightMather);
 }
 
 re_test::MainView::~MainView() {
@@ -44,6 +44,6 @@ void re_test::MainView::reInputChanging() {
             qDebug() << match.capturedStart() << match.capturedEnd();
             highlight_intervals.push_back(std::make_pair(match.capturedStart(), match.capturedEnd()));
         }
-        emit this->startHightlight(highlight_intervals);
+        emit this->startHighlight(highlight_intervals);
     }
 }

@@ -38,7 +38,7 @@ class MainView : public QWidget {
     void reInputChanging();
 
   signals:
-    void startHightlight(const QList<std::pair<int, int>>& highlight_intervals);
+    void startHighlight(const QList<std::pair<int, int>>& highlight_intervals);
 };
 }
 
