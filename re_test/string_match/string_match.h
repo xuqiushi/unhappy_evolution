@@ -14,6 +14,7 @@ QT_END_NAMESPACE
 
 namespace re_test {
 
+// 这是一个颜色环单个node的struct
 struct ColorCircleNode {
     QColor color;
     ColorCircleNode *next;
@@ -28,11 +29,11 @@ class StringMatch : public QPlainTextEdit {
 
   private:
     re_test::Ui::StringMatch *ui_;
-    ColorCircleNode *color_circle_;
+    ColorCircleNode *color_circle_;  // 保存一个颜色
 
   private:
-    void generateColorCircle();
-    void cleanColorCircle();
+    void generateColorCircle();  // 初始化颜色
+    void cleanColorCircle();  // 删除颜色环
 
   public slots:
     void setHighlightMather(const QList<std::pair<int, int>>& highlight_intervals);

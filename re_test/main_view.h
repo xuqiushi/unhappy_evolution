@@ -27,12 +27,12 @@ class MainView : public QWidget {
 
   private:
     Ui::MainView *ui_;
-    QVBoxLayout *main_layout_;
-    QHBoxLayout *body_layout_;
-    re_test::ReInput *re_input_;
-    re_test::StringRaw *string_raw_;
-    re_test::StringMatch *string_match_;
-    QRegularExpression current_re_;
+    QVBoxLayout *main_layout_;  // 整体layout为垂直
+    QHBoxLayout *body_layout_;  // 下部layout为水平
+    re_test::ReInput *re_input_;  // 输入正则表达式部分
+    re_test::StringRaw *string_raw_;  // 输入原始字符串部分
+    re_test::StringMatch *string_match_;  // 产生匹配结果部分
+    QRegularExpression current_re_;  // 当前的正则表达式
 
   private slots:
     void reInputChanging();

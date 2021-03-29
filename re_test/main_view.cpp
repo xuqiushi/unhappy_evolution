@@ -24,6 +24,7 @@ re_test::MainView::MainView(QWidget *parent) :
     this->body_layout_->addWidget(this->string_raw_);
     this->body_layout_->addWidget(this->string_match_);
     connect(this->re_input_, &re_test::ReInput::textChanged, this, &re_test::MainView::reInputChanging);
+    connect(this->string_raw_, &re_test::StringRaw::textChanged, this, &re_test::MainView::reInputChanging);
     connect(this, &re_test::MainView::startHighlight, this->string_match_, &re_test::StringMatch::setHighlightMather);
 }
 
@@ -36,12 +37,13 @@ void re_test::MainView::reInputChanging() {
     this->current_re_.setPattern(this->re_input_->text());
     if (this->current_re_.isValid()) {
         QList<std::pair<int, int>> highlight_intervals;
-        QRegularExpressionMatchIterator match_iterator = this->current_re_.globalMatch(this->string_raw_->toPlainText());
+        QRegularExpressionMatchIterator
+            match_iterator = this->current_re_.globalMatch(this->string_raw_->toPlainText());
         QRegularExpressionMatch match;
-        qDebug() << "____";
+//        qDebug() << "____";
         while (match_iterator.hasNext()) {
             match = match_iterator.next();
-            qDebug() << match.capturedStart() << match.capturedEnd();
+//            qDebug() << match.capturedStart() << match.capturedEnd();
             highlight_intervals.push_back(std::make_pair(match.capturedStart(), match.capturedEnd()));
         }
         emit this->startHighlight(highlight_intervals);
