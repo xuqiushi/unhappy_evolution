@@ -47,9 +47,15 @@ set(PROJECT_SOURCES
         preview_csv/parse_option/parse_option.cpp preview_csv/parse_option/parse_option.h preview_csv/parse_option/parse_option.ui
         preview_csv/data_model/custom_csv_model.cpp preview_csv/data_model/custom_csv_model.h
         tools/csv_line_parser.cpp tools/csv_line_parser.h
-        preview_csv/preview_content/preview_content.cpp preview_csv/preview_content/preview_content.h preview_csv/preview_content/preview_content.ui preview_csv/file_summary/file_summary.cpp preview_csv/file_summary/file_summary.h preview_csv/file_summary/file_summary.ui parse_json/main_view.cpp
-        parse_json/main_view.h parse_json/main_view.ui
-        parse_json/json_plain_viewer/json_plain_viewer.cpp parse_json/json_plain_viewer/json_plain_viewer.h parse_json/json_tree_viewer/json_tree_model/json_tree_model.cpp parse_json/json_tree_viewer/json_tree_model/json_tree_model.h parse_json/json_tree_viewer/json_tree_viewer.cpp parse_json/json_tree_viewer/json_tree_viewer.h picture_to_base64/main_view.cpp picture_to_base64/main_view.h picture_to_base64/main_view.ui picture_to_base64/clipboard_picture_viewer/clipboard_picture_viewer.cpp picture_to_base64/clipboard_picture_viewer/clipboard_picture_viewer.h)
+        preview_csv/preview_content/preview_content.cpp preview_csv/preview_content/preview_content.h preview_csv/preview_content/preview_content.ui
+        preview_csv/file_summary/file_summary.cpp preview_csv/file_summary/file_summary.h preview_csv/file_summary/file_summary.ui
+        parse_json/main_view.cpp parse_json/main_view.h parse_json/main_view.ui
+        parse_json/json_plain_viewer/json_plain_viewer.cpp parse_json/json_plain_viewer/json_plain_viewer.h
+        parse_json/json_tree_viewer/json_tree_model/json_tree_model.cpp parse_json/json_tree_viewer/json_tree_model/json_tree_model.h
+        parse_json/json_tree_viewer/json_tree_viewer.cpp parse_json/json_tree_viewer/json_tree_viewer.h
+        picture_to_base64/main_view.cpp picture_to_base64/main_view.h picture_to_base64/main_view.ui
+        picture_to_base64/clipboard_picture_viewer/clipboard_picture_viewer.cpp picture_to_base64/clipboard_picture_viewer/clipboard_picture_viewer.h
+        re_test/main_view.cpp re_test/main_view.h re_test/main_view.ui re_test/re_input/re_input.cpp re_test/re_input/re_input.h re_test/re_input/re_input.ui re_test/string_raw/string_raw.cpp re_test/string_raw/string_raw.h re_test/string_raw/string_raw.ui re_test/string_match/string_match.cpp re_test/string_match/string_match.h re_test/string_match/string_match.ui)
 
 ## NOTE: Don't include the path in MACOSX_BUNDLE_ICON_FILE -- this is
 ## the property added to Info.plist

@@ -11,6 +11,7 @@
 #include "preview_csv/main_view.h"
 #include "parse_json/main_view.h"
 #include "picture_to_base64/main_view.h"
+#include "re_test/main_view.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Unhappy; }
@@ -20,7 +21,8 @@ enum GlobalFuncType {
     PARSE_JSON = 0x0,  // 解析json部分
     FILE_ENCODING_TRANSFORM = 0x1,  // 文件转码部分
     FAST_PREVIEW_CSV = 0x2,  // csv预览部分
-    PICTURE_TO_BASE_64 = 0x3  // 剪切板图片转base64
+    PICTURE_TO_BASE_64 = 0x3,  // 剪切板图片转base64
+    RE_TEST = 0x4  // 验证正则表达式
 };
 
 class Unhappy : public QWidget {
