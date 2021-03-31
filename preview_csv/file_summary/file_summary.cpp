@@ -4,8 +4,8 @@
 
 // You may need to build the project (run Qt uic code generator) to get "ui_file_summary.h" resolved
 
-#include <filesystem>
 #include <QFile>
+#include <QDir>
 #include <QLabel>
 #include <QTextEdit>
 #include <QLineEdit>
@@ -120,13 +120,14 @@ void preview_csv::FileSummary::insertSingleToRow(int row_index,
 }
 
 void preview_csv::FileSummary::getFileInfo() {
-    // 调用filesystem库直接解析文件路径
-    std::filesystem::path file_path(this->file_path_.toStdString().c_str());
+    // 读取文件路径
+    QFile file(this->file_path_);
     this->file_info_ = new FileInfo();
     // 获取文件名字
-    this->file_info_->file_name = QString::fromStdString(file_path.filename().string());
+    QStringList separated_filename = file.fileName().split(QDir::separator());
+    this->file_info_->file_name = separated_filename[separated_filename.size() - 1];
     // 获取文件大小，单位为m
-    this->file_info_->file_size = QString::number((double) std::filesystem::file_size(file_path) / 1048576.0);
+    this->file_info_->file_size = QString::number((double) file.size() / 1048576.0);
     // 删除layout下的所有项目
     QLayoutItem *item;
     while ((item = this->main_content_layout_->takeAt(0)))
