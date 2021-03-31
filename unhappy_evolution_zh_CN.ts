@@ -110,6 +110,7 @@
     <message>
         <location filename="re_test/main_view.ui" line="17"/>
         <location filename="cmake-build-debug/unhappy_evolution_autogen/include/re_test/ui_main_view.h" line="35"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/re_test/ui_main_view.h" line="35"/>
         <source>MainView</source>
         <translation type="unfinished"></translation>
     </message>
@@ -119,6 +120,7 @@
     <message>
         <location filename="re_test/re_input/re_input.ui" line="17"/>
         <location filename="cmake-build-debug/unhappy_evolution_autogen/include/re_test/re_input/ui_re_input.h" line="35"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/re_test/re_input/ui_re_input.h" line="35"/>
         <source>ReInput</source>
         <translation type="unfinished"></translation>
     </message>
@@ -128,6 +130,7 @@
     <message>
         <location filename="re_test/string_match/string_match.ui" line="17"/>
         <location filename="cmake-build-debug/unhappy_evolution_autogen/include/re_test/string_match/ui_string_match.h" line="35"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/re_test/string_match/ui_string_match.h" line="35"/>
         <source>StringMatch</source>
         <translation type="unfinished"></translation>
     </message>
@@ -137,6 +140,7 @@
     <message>
         <location filename="re_test/string_raw/string_raw.ui" line="17"/>
         <location filename="cmake-build-debug/unhappy_evolution_autogen/include/re_test/string_raw/ui_string_raw.h" line="35"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/re_test/string_raw/ui_string_raw.h" line="35"/>
         <source>StringRaw</source>
         <translation type="unfinished"></translation>
     </message>

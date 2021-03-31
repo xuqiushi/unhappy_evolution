@@ -31,6 +31,16 @@ endif ()
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets LinguistTools REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets LinguistTools REQUIRED)
 
+#set(Python_ADDITIONAL_VERSIONS 3.7)
+find_package(PythonLibs 3 REQUIRED)
+include_directories(${PYTHON_INCLUDE_DIRS})
+
+message(WARNING "Python_FOUND:${Python_FOUND}")
+message(WARNING "Python_VERSION:${Python_VERSION}")
+message(WARNING "Python_Development_FOUND:${Python_Development_FOUND}")
+message(WARNING "Python_LIBRARIES:${Python_LIBRARIES}")
+message(WARNING "Python include dirs: ${PYTHON_INCLUDE_DIRS}")
+
 set(TS_FILES unhappy_evolution_zh_CN.ts)
 
 set(PROJECT_SOURCES
@@ -88,6 +98,6 @@ else ()
     endif ()
 endif ()
 
-target_link_libraries(unhappy_evolution PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(unhappy_evolution PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${PYTHON_LIBRARIES})
 
 qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
