@@ -35,7 +35,7 @@ void picture_to_base64::ClipboardPictureViewer::keyPressEvent(QKeyEvent *ev) {
                 QBuffer buffer(&byte_array);
                 this->image_data_->save(&buffer, "PNG"); // writes the image in PNG format inside the buffer
                 QString base_64 = QString::fromLatin1(byte_array.toBase64().data());
-                emit this->sendBase64(QString("%1%2").arg("data:image/png;base64,").arg(base_64));
+                emit this->sendBase64(QString("%1%2").arg("data:image/png;base64,", base_64));
             }
         }
     }

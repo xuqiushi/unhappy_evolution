@@ -63,3 +63,7 @@ void file_encoding_transform::DragIn::dragLeaveEvent(QDragLeaveEvent *event) {
 void file_encoding_transform::DragIn::beginSend() {
     emit this->sendFileList(this->file_list_model_);
 }
+
+void file_encoding_transform::DragIn::clearCurrentFiles() {
+    this->file_list_model_->removeRows(0, this->file_list_model_->rowCount());
+}

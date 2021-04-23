@@ -26,7 +26,9 @@ file_encoding_transform::MainView::MainView(QWidget *parent) :
 
     auto *main_layout = new QHBoxLayout();
     auto *v_layout = new QVBoxLayout();
+    auto *clear_button = new QPushButton(QString::fromLocal8Bit("清理"));
     auto *right_arrow = new QPushButton("转换为");
+    v_layout->addWidget(clear_button);
     v_layout->addWidget(right_arrow);
     main_layout->addWidget(file_encoding_transform_drag_in);
     main_layout->addLayout(v_layout);
@@ -37,8 +39,12 @@ file_encoding_transform::MainView::MainView(QWidget *parent) :
             &file_encoding_transform::DragIn::beginSend);
     connect(file_encoding_transform_drag_in, &file_encoding_transform::DragIn::sendFileList, this,
             &file_encoding_transform::MainView::transformFiles);
-    connect(this, &file_encoding_transform::MainView::SendTransformedFile, file_encoding_transform_result,
-            &file_encoding_transform::ResultView::ReceiveTransformedFile);
+    connect(this, &file_encoding_transform::MainView::sendTransformedFile, file_encoding_transform_result,
+            &file_encoding_transform::ResultView::receiveTransformedFile);
+    connect(clear_button, &QPushButton::pressed, file_encoding_transform_drag_in,
+            &file_encoding_transform::DragIn::clearCurrentFiles);
+    connect(clear_button, &QPushButton::pressed, file_encoding_transform_result,
+            &file_encoding_transform::ResultView::clearCurrentResults);
 }
 
 file_encoding_transform::MainView::~MainView() {
@@ -77,6 +83,6 @@ void file_encoding_transform::MainView::transformFiles(QStringListModel *file_li
         }
         output_file.write(output_bytes);
         output_file.close();
-        emit this->SendTransformedFile(new_file_path);
+        emit this->sendTransformedFile(new_file_path);
     }
 }

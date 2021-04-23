@@ -25,7 +25,7 @@ class MainView : public QWidget {
     void transformFiles(QStringListModel *file_list_model);
 
   signals:
-    void SendTransformedFile(QString file_path);
+    void sendTransformedFile(QString file_path);
 
   private:
     Ui::MainView *ui_;

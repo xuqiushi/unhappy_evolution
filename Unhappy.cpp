@@ -26,12 +26,18 @@ Unhappy::Unhappy(QWidget *parent)
               {RE_TEST, new re_test::MainView(this)}
           }
       ) {
+    // 默认激活页面
+    GlobalFuncType default_page = RE_TEST;
     // 配置ui文件
     ui_->setupUi(this);
     // 创建第一行导航按钮
     this->control_group_ = new QButtonGroup(this->head_h_layout_);
     for (auto &button : this->button_map_) {
         button.second->setFocusPolicy(Qt::NoFocus);
+        button.second->setCheckable(true);
+        if (button.first == default_page) {
+            button.second->setChecked(true);
+        }
         this->control_group_->addButton(button.second);
         // 主布局上半部分为选项
         this->head_h_layout_->addWidget(button.second);
@@ -45,7 +51,7 @@ Unhappy::Unhappy(QWidget *parent)
         this->function_map_.find(button.first)->second->hide();
     }
     // 显示默认激活的页面
-    this->active_page_ = this->function_map_.find(RE_TEST)->second;
+    this->active_page_ = this->function_map_.find(default_page)->second;
     this->active_page_->show();
     this->head_bar_->setFrameStyle(QFrame::StyledPanel | QFrame::Plain);
     this->control_group_->setExclusive(true);

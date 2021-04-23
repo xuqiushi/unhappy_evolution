@@ -33,6 +33,8 @@ class DragIn : public QWidget {
   public slots:
     void beginSend();
 
+    void clearCurrentFiles();
+
   signals:
     void sendFileList(QStringListModel *file_list_model);
 

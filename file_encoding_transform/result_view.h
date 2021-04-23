@@ -26,7 +26,9 @@ class ResultView : public QWidget {
     QStringListModel *transformed_file_model_ = new QStringListModel();
 
   public slots:
-    void ReceiveTransformedFile(const QString &transformed_file_path);
+    void receiveTransformedFile(const QString &transformed_file_path);
+
+    void clearCurrentResults();
 };
 }
 

@@ -18,9 +18,13 @@ file_encoding_transform::ResultView::~ResultView() {
     delete ui_;
 }
 
-void file_encoding_transform::ResultView::ReceiveTransformedFile(const QString &transformed_file_path) {
+void file_encoding_transform::ResultView::receiveTransformedFile(const QString &transformed_file_path) {
     int next_position = this->transformed_file_model_->rowCount();
     this->transformed_file_model_->insertRows(next_position, 1);
     QModelIndex edit_index = this->transformed_file_model_->index(next_position);
     this->transformed_file_model_->setData(edit_index, transformed_file_path);
+}
+
+void file_encoding_transform::ResultView::clearCurrentResults() {
+    this->transformed_file_model_->removeRows(0, this->transformed_file_model_->rowCount());
 }
