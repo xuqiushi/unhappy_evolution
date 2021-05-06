@@ -1,4 +1,7 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.18)
+
+# deploy macos version
+#set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
 
 project(unhappy_evolution LANGUAGES CXX)
 
@@ -31,15 +34,15 @@ endif ()
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets LinguistTools REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets LinguistTools REQUIRED)
 
-#set(Python_ADDITIONAL_VERSIONS 3.7)
-find_package(PythonLibs 3 REQUIRED)
-include_directories(${PYTHON_INCLUDE_DIRS})
+find_package(Python3 COMPONENTS Interpreter Development)
+include_directories(${Python3_INCLUDE_DIRS})
 
-message(WARNING "Python_FOUND:${Python_FOUND}")
-message(WARNING "Python_VERSION:${Python_VERSION}")
-message(WARNING "Python_Development_FOUND:${Python_Development_FOUND}")
-message(WARNING "Python_LIBRARIES:${Python_LIBRARIES}")
-message(WARNING "Python include dirs: ${PYTHON_INCLUDE_DIRS}")
+message(WARNING "Python_FOUND:${Python3_FOUND}")
+message(WARNING "Python_VERSION:${Python3_VERSION}")
+message(WARNING "Python_Development_FOUND:${Python3_Development_FOUND}")
+message(WARNING "Python_LIBRARIES:${Python3_LIBRARIES}")
+message(WARNING "Python_LIBRARY_DIRS:${Python3_LIBRARY_DIRS}")
+message(WARNING "Python_RUNTIME_LIBRARY_DIRS:${Python3_RUNTIME_LIBRARY_DIRS}")
 
 set(TS_FILES unhappy_evolution_zh_CN.ts)
 
@@ -65,7 +68,7 @@ set(PROJECT_SOURCES
         parse_json/json_tree_viewer/json_tree_viewer.cpp parse_json/json_tree_viewer/json_tree_viewer.h
         picture_to_base64/main_view.cpp picture_to_base64/main_view.h picture_to_base64/main_view.ui
         picture_to_base64/clipboard_picture_viewer/clipboard_picture_viewer.cpp picture_to_base64/clipboard_picture_viewer/clipboard_picture_viewer.h
-        re_test/main_view.cpp re_test/main_view.h re_test/main_view.ui re_test/re_input/re_input.cpp re_test/re_input/re_input.h re_test/re_input/re_input.ui re_test/string_raw/string_raw.cpp re_test/string_raw/string_raw.h re_test/string_raw/string_raw.ui re_test/string_match/string_match.cpp re_test/string_match/string_match.h re_test/string_match/string_match.ui)
+        re_test/main_view.cpp re_test/main_view.h re_test/main_view.ui re_test/re_input/re_input.cpp re_test/re_input/re_input.h re_test/re_input/re_input.ui re_test/string_raw/string_raw.cpp re_test/string_raw/string_raw.h re_test/string_raw/string_raw.ui re_test/string_match/string_match.cpp re_test/string_match/string_match.h re_test/string_match/string_match.ui code_snapshot/main_view.cpp code_snapshot/main_view.h code_snapshot/main_view.ui)
 
 ## NOTE: Don't include the path in MACOSX_BUNDLE_ICON_FILE -- this is
 ## the property added to Info.plist
@@ -98,6 +101,6 @@ else ()
     endif ()
 endif ()
 
-target_link_libraries(unhappy_evolution PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${PYTHON_LIBRARIES})
+target_link_libraries(unhappy_evolution PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${Python3_LIBRARIES})
 
 qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})

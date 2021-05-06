@@ -79,6 +79,16 @@
     </message>
 </context>
 <context>
+    <name>code_snapshot::MainView</name>
+    <message>
+        <location filename="code_snapshot/main_view.ui" line="17"/>
+        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/code_snapshot/ui_main_view.h" line="35"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/code_snapshot/ui_main_view.h" line="35"/>
+        <source>MainView</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>parse_json::MainView</name>
     <message>
         <location filename="parse_json/main_view.ui" line="14"/>

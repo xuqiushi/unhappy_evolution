@@ -14,7 +14,8 @@ Unhappy::Unhappy(QWidget *parent)
               {FILE_ENCODING_TRANSFORM, new QPushButton(QString("文件UTF-8转GB18030"))},
               {FAST_PREVIEW_CSV, new QPushButton(QString("快速预览csv"))},
               {PICTURE_TO_BASE_64, new QPushButton(QString("剪切板转base64"))},
-              {RE_TEST, new QPushButton(QString("正则测试"))}
+              {RE_TEST, new QPushButton(QString("正则测试"))},
+              {CODE_SNAPSHOT, new QPushButton(QString("代码片段"))}
           }
       ),
       function_map_(
@@ -23,7 +24,8 @@ Unhappy::Unhappy(QWidget *parent)
               {FILE_ENCODING_TRANSFORM, new file_encoding_transform::MainView(this)},
               {FAST_PREVIEW_CSV, new preview_csv::MainView(this)},
               {PICTURE_TO_BASE_64, new picture_to_base64::MainView(this)},
-              {RE_TEST, new re_test::MainView(this)}
+              {RE_TEST, new re_test::MainView(this)},
+              {CODE_SNAPSHOT, new code_snapshot::MainView(this)}
           }
       ) {
     // 默认激活页面

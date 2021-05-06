@@ -12,6 +12,7 @@
 #include "parse_json/main_view.h"
 #include "picture_to_base64/main_view.h"
 #include "re_test/main_view.h"
+#include "code_snapshot/main_view.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Unhappy; }
@@ -22,7 +23,8 @@ enum GlobalFuncType {
     FILE_ENCODING_TRANSFORM = 0x1,  // 文件转码部分
     FAST_PREVIEW_CSV = 0x2,  // csv预览部分
     PICTURE_TO_BASE_64 = 0x3,  // 剪切板图片转base64
-    RE_TEST = 0x4  // 验证正则表达式
+    RE_TEST = 0x4,  // 验证正则表达式
+    CODE_SNAPSHOT = 0x5  // 代码片段
 };
 
 class Unhappy : public QWidget {
