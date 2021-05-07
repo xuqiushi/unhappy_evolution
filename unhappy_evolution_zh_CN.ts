@@ -89,6 +89,24 @@
     </message>
 </context>
 <context>
+    <name>code_snapshot::SnapSelector</name>
+    <message>
+        <location filename="code_snapshot/snap_selector/snap_selector.ui" line="17"/>
+        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_snap_selector.h" line="35"/>
+        <source>SnapSelector</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>code_snapshot::SnapViewer</name>
+    <message>
+        <location filename="code_snapshot/snap_viewer/snap_viewer.ui" line="17"/>
+        <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_snap_viewer.h" line="35"/>
+        <source>SnapViewer</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>parse_json::MainView</name>
     <message>
         <location filename="parse_json/main_view.ui" line="14"/>

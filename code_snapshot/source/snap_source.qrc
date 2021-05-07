@@ -1,0 +1,10 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/code_snapshot/python">
+        <file alias="name_equal_main.txt">python/name_equal_main.txt</file>
+        <file alias="singleton_meta.txt">python/singleton_meta.txt</file>
+    </qresource>
+    <qresource prefix="/code_snapshot/qt">
+        <file alias="show_all_qrc.txt">qt/show_all_qrc.txt</file>
+    </qresource>
+</RCC>

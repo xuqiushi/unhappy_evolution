@@ -29,7 +29,7 @@ Unhappy::Unhappy(QWidget *parent)
           }
       ) {
     // 默认激活页面
-    GlobalFuncType default_page = RE_TEST;
+    GlobalFuncType default_page = CODE_SNAPSHOT;
     // 配置ui文件
     ui_->setupUi(this);
     // 创建第一行导航按钮
@@ -79,6 +79,5 @@ void Unhappy::changeActivePage() {
     // 替换现在的widget为需要激活的widget
     this->active_page_->show();
     this->main_layout_->replaceWidget(tmp, this->active_page_);
-
 }
 
