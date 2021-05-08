@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.18)
 
 # deploy macos version
-#set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
+#set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version" FORCE)
 
 project(unhappy_evolution LANGUAGES CXX)
 
@@ -68,7 +68,15 @@ set(PROJECT_SOURCES
         parse_json/json_tree_viewer/json_tree_viewer.cpp parse_json/json_tree_viewer/json_tree_viewer.h
         picture_to_base64/main_view.cpp picture_to_base64/main_view.h picture_to_base64/main_view.ui
         picture_to_base64/clipboard_picture_viewer/clipboard_picture_viewer.cpp picture_to_base64/clipboard_picture_viewer/clipboard_picture_viewer.h
-        re_test/main_view.cpp re_test/main_view.h re_test/main_view.ui re_test/re_input/re_input.cpp re_test/re_input/re_input.h re_test/re_input/re_input.ui re_test/string_raw/string_raw.cpp re_test/string_raw/string_raw.h re_test/string_raw/string_raw.ui re_test/string_match/string_match.cpp re_test/string_match/string_match.h re_test/string_match/string_match.ui code_snapshot/main_view.cpp code_snapshot/main_view.h code_snapshot/main_view.ui code_snapshot/snap_linker/snap_linker.cpp code_snapshot/snap_linker/snap_linker.h code_snapshot/snap_selector/snap_selector.cpp code_snapshot/snap_selector/snap_selector.h code_snapshot/snap_selector/snap_selector.ui code_snapshot/snap_viewer/snap_viewer.cpp code_snapshot/snap_viewer/snap_viewer.h code_snapshot/snap_viewer/snap_viewer.ui)
+        re_test/main_view.cpp re_test/main_view.h re_test/main_view.ui
+        re_test/re_input/re_input.cpp re_test/re_input/re_input.h re_test/re_input/re_input.ui
+        re_test/string_raw/string_raw.cpp re_test/string_raw/string_raw.h re_test/string_raw/string_raw.ui
+        re_test/string_match/string_match.cpp re_test/string_match/string_match.h re_test/string_match/string_match.ui
+        code_snapshot/main_view.cpp code_snapshot/main_view.h code_snapshot/main_view.ui
+        code_snapshot/snap_linker/snap_linker.cpp code_snapshot/snap_linker/snap_linker.h
+        code_snapshot/snap_selector/snap_selector.cpp code_snapshot/snap_selector/snap_selector.h code_snapshot/snap_selector/snap_selector.ui
+        code_snapshot/snap_viewer/snap_viewer.cpp code_snapshot/snap_viewer/snap_viewer.h code_snapshot/snap_viewer/snap_viewer.ui
+        )
 
 ## NOTE: Don't include the path in MACOSX_BUNDLE_ICON_FILE -- this is
 ## the property added to Info.plist

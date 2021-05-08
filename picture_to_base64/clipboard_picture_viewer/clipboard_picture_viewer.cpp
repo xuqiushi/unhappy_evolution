@@ -19,8 +19,7 @@ picture_to_base64::ClipboardPictureViewer::ClipboardPictureViewer(QWidget *paren
     this->setFocusPolicy(Qt::ClickFocus);
 }
 
-picture_to_base64::ClipboardPictureViewer::~ClipboardPictureViewer() {
-}
+picture_to_base64::ClipboardPictureViewer::~ClipboardPictureViewer() = default;
 
 void picture_to_base64::ClipboardPictureViewer::keyPressEvent(QKeyEvent *ev) {
     if (ev->type() == QKeyEvent::KeyPress) {
@@ -39,4 +38,8 @@ void picture_to_base64::ClipboardPictureViewer::keyPressEvent(QKeyEvent *ev) {
             }
         }
     }
+}
+
+void picture_to_base64::ClipboardPictureViewer::startSendImageForSave() {
+    emit this->sendImageForSave(this->image_data_);
 }

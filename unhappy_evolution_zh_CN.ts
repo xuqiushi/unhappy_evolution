@@ -93,6 +93,7 @@
     <message>
         <location filename="code_snapshot/snap_selector/snap_selector.ui" line="17"/>
         <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_snap_selector.h" line="35"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/ui_snap_selector.h" line="35"/>
         <source>SnapSelector</source>
         <translation type="unfinished"></translation>
     </message>
@@ -102,6 +103,7 @@
     <message>
         <location filename="code_snapshot/snap_viewer/snap_viewer.ui" line="17"/>
         <location filename="cmake-build-debug/unhappy_evolution_autogen/include/ui_snap_viewer.h" line="35"/>
+        <location filename="cmake-build-release/unhappy_evolution_autogen/include/ui_snap_viewer.h" line="35"/>
         <source>SnapViewer</source>
         <translation type="unfinished"></translation>
     </message>

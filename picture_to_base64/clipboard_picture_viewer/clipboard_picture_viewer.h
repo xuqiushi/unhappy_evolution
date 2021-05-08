@@ -23,8 +23,12 @@ class ClipboardPictureViewer : public QLabel {
   private:
     QImage *image_data_;
 
+  public slots:
+    void startSendImageForSave();
+
   signals:
-    void sendBase64(QString image_base64);
+    void sendBase64(QString image_base_64);
+    void sendImageForSave(QImage * image);
 };
 }
 
