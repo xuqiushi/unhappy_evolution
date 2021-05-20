@@ -50,7 +50,7 @@ void parse_json::MainView::startParse() {
     }
     this->formatted_stdout_json_ = json_doc.toJson(QJsonDocument::Indented);
     this->json_viewer_->setPlainText(this->formatted_stdout_json_);
-    this->json_model_->loadJson(this->ui_->raw_text->toPlainText().toUtf8());
+    this->json_model_->loadJson(raw_text.toUtf8());
 }
 
 QString parse_json::MainView::dealWithSingleQuote(QString json_string) {
@@ -77,7 +77,7 @@ QString parse_json::MainView::dealWithSingleQuote(QString json_string) {
             }
         } else {
             // key start
-            if (current_char == ' ') {
+            if (current_char == ' ' || current_char == '\n' || current_char == '\t' || current_char == '\r') {
                 continue;
             } else if (current_char == '\'') {
                 need_transform = true;
