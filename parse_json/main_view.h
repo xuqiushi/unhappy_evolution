@@ -29,6 +29,9 @@ class MainView : public QWidget {
     void startParse();
 
   private:
+    static QString dealWithSingleQuote(QString json_string);
+
+  private:
     parse_json::Ui::MainView *ui_;  // ui
     QString formatted_stdout_json_;  // 解析之后的json string
     QTabWidget *main_tab_;  // 主界面

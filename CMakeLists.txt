@@ -89,6 +89,8 @@ set_source_files_properties(${APP_ICON_MACOSX} PROPERTIES
 
 qt5_add_resources(PROJECT_SOURCES code_snapshot/source/snap_source.qrc)
 
+message(WARNING "QT_VERSION_MAJOR:${QT_VERSION_MAJOR}")
+
 if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(unhappy_evolution
             ${PROJECT_SOURCES}
