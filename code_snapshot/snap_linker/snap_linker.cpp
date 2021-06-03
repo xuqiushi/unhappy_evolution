@@ -17,6 +17,9 @@ code_snapshot::SnapLinker::SnapLinker() {
                 },
                 {
                     QString("singleton_meta"), 0
+                },
+                {
+                    QString("luigi_build_run"), 0
                 }
             }
         },
@@ -27,11 +30,19 @@ code_snapshot::SnapLinker::SnapLinker() {
                 }
             }
         },
+        {
+            QString("command_line"),
+            {
+                {
+                    QString("luigi_run_command"), 0
+                }
+            }
+        }
     };
 }
 
 code_snapshot::SnapLinker::~SnapLinker() {
-    for(auto first_level: this->language_snap_map_) {
+    for (auto first_level: this->language_snap_map_) {
         first_level.second.clear();
     }
     this->language_snap_map_.clear();
@@ -65,7 +76,8 @@ int code_snapshot::SnapLinker::getArgCount(const QString &language_type, const Q
     if (this->language_snap_map_.find(language_type) == this->language_snap_map_.end()) {
         return 0;
     }
-    if (this->language_snap_map_.find(language_type)->second.find(snap_name) == this->language_snap_map_.find(language_type)->second.end()) {
+    if (this->language_snap_map_.find(language_type)->second.find(snap_name)
+        == this->language_snap_map_.find(language_type)->second.end()) {
         return 0;
     }
     return this->language_snap_map_.find(language_type)->second.find(snap_name)->second;
@@ -74,8 +86,7 @@ int code_snapshot::SnapLinker::getArgCount(const QString &language_type, const Q
 QStringList code_snapshot::SnapLinker::getAllLanguageTypes() {
     // 获取所有的语言列表
     QStringList types = QStringList();
-    for(auto & it : this->language_snap_map_)
-    {
+    for (auto &it : this->language_snap_map_) {
         types.push_back(it.first);
     }
     return types;
@@ -87,8 +98,7 @@ QStringList code_snapshot::SnapLinker::getAllSnapNamesByLanguageType(const QStri
     if (this->language_snap_map_.find(language_type) == this->language_snap_map_.end()) {
         return types;
     }
-    for(auto & it : this->language_snap_map_.find(language_type)->second)
-    {
+    for (auto &it : this->language_snap_map_.find(language_type)->second) {
         types.push_back(it.first);
     }
     return types;

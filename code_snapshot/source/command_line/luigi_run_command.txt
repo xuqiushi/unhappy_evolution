@@ -1,0 +1,1 @@
+python -m luigi --module module_path --local-scheduler --parameter=value

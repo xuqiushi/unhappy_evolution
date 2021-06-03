@@ -1,0 +1,1 @@
+luigi.build([TaskName(parameter=value)], local_scheduler=True)
