@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.18)
 
 # deploy macos version
 #set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version" FORCE)
-
+IF(APPLE)
+    SET(CMAKE_OSX_ARCHITECTURES "x86_64" CACHE STRING "Build architectures for Mac OS X" FORCE)
+ENDIF(APPLE)
 project(unhappy_evolution LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
